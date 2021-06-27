@@ -1,14 +1,16 @@
-{ lib, stdenv, fetchurl, fetchpatch, zlib, protobuf, ncurses, pkg-config
+{ lib, stdenv, fetchFromGitHub, zlib, protobuf, ncurses, pkg-config
 , makeWrapper, perlPackages, openssl, autoreconfHook, openssh, bash-completion
 , withUtempter ? stdenv.isLinux, libutempter }:
 
 stdenv.mkDerivation rec {
   pname = "mosh";
-  version = "1.3.2";
+  version = "03087e7a761df300c2d8cd6e072890f8e1059dfa";
 
-  src = fetchurl {
-    url = "https://mosh.org/mosh-${version}.tar.gz";
-    sha256 = "05hjhlp6lk8yjcy59zywpf0r6s0h0b9zxq0lw66dh9x8vxrhaq6s";
+  src = fetchFromGitHub {
+    owner = "mobile-shell";
+    repo = "mosh";
+    rev = "03087e7a761df300c2d8cd6e072890f8e1059dfa";
+    sha256 = "170m3q9sxw6nh8fvrf1l0hbx0rjjz5f5lzhd41143kd1rps3liw8";
   };
 
   nativeBuildInputs = [ autoreconfHook pkg-config makeWrapper ];
@@ -22,11 +24,6 @@ stdenv.mkDerivation rec {
     ./ssh_path.patch
     ./mosh-client_path.patch
     ./utempter_path.patch
-    # Fix w/c++17, ::bind vs std::bind
-    (fetchpatch {
-      url = "https://github.com/mobile-shell/mosh/commit/e5f8a826ef9ff5da4cfce3bb8151f9526ec19db0.patch";
-      sha256 = "15518rb0r5w1zn4s6981bf1sz6ins6gpn2saizfzhmr13hw4gmhm";
-    })
     # Fix build with bash-completion 2.10
     ./bash_completion_datadir.patch
   ];
