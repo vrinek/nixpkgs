@@ -6,13 +6,13 @@
 
 python3Packages.buildPythonApplication rec {
   pname = "chia";
-  version = "1.1.7";
+  version = "1.2.0-pools-release";
 
   src = fetchFromGitHub {
     owner = "Chia-Network";
     repo = "chia-blockchain";
-    rev = version;
-    sha256 = "05hcckkv3vhz172w9kp5lh4srakizx1l383dijs50vgx2bj30m8v";
+    rev = "pools-release";
+    hash = "sha256:0qcivjg3mbdnc1f7cf5d2wiv09r7vbr4pgq4qpqnyk2brg0nlyqp";
   };
 
   patches = [
@@ -41,7 +41,7 @@ python3Packages.buildPythonApplication rec {
     chiapos
     chiavdf
     chiabip158
-    click
+    click-7
     clvm
     clvm-rs
     clvm-tools
@@ -53,7 +53,7 @@ python3Packages.buildPythonApplication rec {
     pyyaml
     setproctitle
     setuptools # needs pkg_resources at runtime
-    sortedcontainers
+    sortedcontainers-2-3-0
     websockets
   ];
 
