@@ -8087,6 +8087,7 @@ in {
   sortedcollections = callPackage ../development/python-modules/sortedcollections { };
 
   sortedcontainers = callPackage ../development/python-modules/sortedcontainers { };
+  sortedcontainers-2-3-0 = callPackage ../development/python-modules/sortedcontainers/2-3-0.nix { };
 
   sounddevice = callPackage ../development/python-modules/sounddevice { };
 
