@@ -1458,6 +1458,7 @@ in {
   cock = callPackage ../development/python-modules/cock { };
 
   click = callPackage ../development/python-modules/click { };
+  click-7 = callPackage ../development/python-modules/click/7.nix { };
 
   clickclick = callPackage ../development/python-modules/clickclick { };
 
